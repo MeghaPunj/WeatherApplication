@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Weather Application</title>
+</head>
+<body>
+	<header>
+		<h3>Weather Application</h3>
+	</header>
+	<form method="post">
+		<table>
+			<tr>
+				<td>Select the city</td>
+				<td><select onchange="this.form.submit()"
+					th:field="${city.name}">
+						<option value="Select">Select the City</option>
+						<option value="sydney">Sydney</option>
+						<option value="melbourne">Melbourne</option>
+						<option value="wollongong">Wollongong</option>
+				</select></td>
+			</tr>
+			<tr></tr>
+		</table>
+		<table th:if="${weatherResponse!=null}" border="1" style="width: 75%">
+			<!--  <div th:inline="text">-->
+			<tr>
+				<th>City</th>
+				<th>Weather</th>
+				<th>Time</th>
+				<th>Temperature in celsius</th>
+				<th>Minimum Temperature in celsius</th>
+				<th>Maximum Temperature in celsius</th>
+				<th>Wind Speed in km/h</th>
+			</tr>
+			<tr>
+				<td th:text="${weatherResponse.getName()}"></td>
+				<td
+					th:text="${weatherResponse.getWeather().get(0).getDescription()}"></td>
+				<td th:text="${weatherResponse.getDt()}"></td>
+				<td th:text="${weatherResponse.getMain().getTemp()}"></td>
+				<td th:text="${weatherResponse.getMain().getTempMin()}"></td>
+				<td th:text="${weatherResponse.getMain().getTempMax()}"></td>
+				<td th:text="${weatherResponse.getWind().getSpeed()}"></td>
+			</tr>
+		</table>
+
+	</form>
+</body>
+</html>
