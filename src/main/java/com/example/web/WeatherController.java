@@ -37,7 +37,6 @@ public class WeatherController {
 			RequestEntity<String> request = new RequestEntity<>(HttpMethod.GET, uri);
 			weatherResponse = template.exchange(uri, HttpMethod.GET, request, WeatherResponse.class).getBody();
 		}
-
 		model.put("weatherResponse", weatherResponse);
 		model.put("city", city);
 		return "weather";
