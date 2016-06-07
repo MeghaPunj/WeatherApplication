@@ -34,7 +34,7 @@ public class WeatherController {
 		if (!(city.getName().equalsIgnoreCase("Select"))) {
 			URI uri = new URI(strURI);
 			RestTemplate template = new RestTemplate();
-			RequestEntity<String> request = new RequestEntity<>(HttpMethod.GET, uri);
+			RequestEntity<String> request = new RequestEntity<String>(HttpMethod.GET, uri);
 			weatherResponse = template.exchange(uri, HttpMethod.GET, request, WeatherResponse.class).getBody();
 		}
 		model.put("weatherResponse", weatherResponse);
